@@ -11,6 +11,8 @@
 *.exe
 *.o
 *.so
+target/**
+lib/**
  
 # Packages #
 ############
