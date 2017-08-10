@@ -1,6 +1,7 @@
 package ch6;
 
 import ch6.builderPattern.Car;
+import ch6.flyweightPattern.SharedCacheProvider;
 import ch6.strategyPattern.Strategy;
 import ch6.strategyPattern.StrategyClient;
 import ch6.strategyPattern.StrategyImpl1;
@@ -20,6 +21,7 @@ import java.util.LinkedList;
 
 import static cmn.Commons.joinedList;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertSame;
 import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
@@ -130,7 +132,17 @@ public class DesignPatternTests {
 
     @Test
     public void flyweightPatternTest(){
-
+        //il pattern consiste nel mantenere copie delle istanze che servono per molteplici richieste come elementi comuni.
+        //Il pattern permette di non dover creare più volte lo stesso valore di istanza ma conservarlo in una cache che
+        //correttamente inizializzata serve le richieste
+        SharedCacheProvider carProvider = new SharedCacheProvider();
+        Car car1 = carProvider.carOfValue(2);
+        Car car2 = carProvider.carOfValue(2);
+        //si deve trattare delle medesime istanze e non di oggetti che rispettano solamente l'equals
+        // (possibile anche se sono istanze differenti)
+        assertSame(car1, car2);
     }
+
+
 
 }

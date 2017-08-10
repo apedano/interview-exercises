@@ -20,12 +20,15 @@ public class SharedCacheProvider {
         cache.put(1, (new Car.Builder().manufacturer("fiat").model("punto").cc(1300)).alimentation("diesel").build());
         cache.put(2, (new Car.Builder().manufacturer("mercedes").model("classe a").cc(1600)).alimentation("benzina").build());
         cache.put(3, (new Car.Builder().manufacturer("opel").model("corsa").cc(1100)).alimentation("benzina").build());
+        //default value
+        cache.put(0, (new Car.Builder().manufacturer("ferrari").model("488").cc(3902)).alimentation("benzina").build());
     }
 
     public Car carOfValue(Integer i){
-
+        if(cache.containsKey(i)){
+            return cache.get(i);
+        }
+        return cache.get(0);
     }
-
-
 
 }
