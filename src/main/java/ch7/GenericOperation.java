@@ -5,6 +5,6 @@ package ch7;
  */
 public interface GenericOperation<I,O> {
 
-    public <O> O performOperation(I input);
+    public O performOperation(I input);
 
 }
