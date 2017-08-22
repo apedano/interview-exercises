@@ -9,20 +9,14 @@ import ch6.strategyPattern.StrategyImpl2;
 import ch6.templatePattern.Stack;
 import ch6.templatePattern.StackIntegerEvenPredicate;
 import ch6.templatePattern.StackIntegerOddPredicate;
-import com.google.common.base.Function;
-import com.google.common.collect.Lists;
-import com.sun.deploy.util.StringUtils;
 import org.junit.Test;
-
 
 import java.io.*;
 import java.util.Arrays;
 import java.util.LinkedList;
 
 import static cmn.Commons.joinedList;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertSame;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 

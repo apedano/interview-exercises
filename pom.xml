@@ -8,6 +8,10 @@
     <artifactId>interview-exercises</artifactId>
     <version>1.0-SNAPSHOT</version>
 
+    <properties>
+        <spring.version>4.1.5.RELEASE</spring.version>
+    </properties>
+
     <build>
         <plugins>
             <plugin>
@@ -28,6 +32,25 @@
                 <version>9.2.10.v20150310</version>
             </plugin>
         </plugins>
+
+        <!-- resources -->
+       <!--
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                includes>
+                    <include>clientconfig.xml</include>
+                    <include>pause.png</include>
+                    <include>resume.png</include>
+                    <include>serverconfig.xml</include>
+                    <include>stop.png</include>
+                </includes>
+                relative to target/classes
+                     i.e. ${project.build.outputDirectory}
+                <targetPath>..</targetPath>
+            </resource>
+        </resources>
+        -->
     </build>
 
 
@@ -67,6 +90,52 @@
             <groupId>org.apache.httpcomponents</groupId>
             <artifactId>httpclient</artifactId>
             <version>4.2.2</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.11</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.eclipse.jetty</groupId>
+            <artifactId>jetty-server</artifactId>
+            <version>9.2.10.v20150310</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.eclipse.jetty</groupId>
+            <artifactId>jetty-servlet</artifactId>
+            <version>9.2.10.v20150310</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-core</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+            <version>${spring.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-jdbc</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+            <version>4.1.5.RELEASE</version>
             <scope>test</scope>
         </dependency>
     </dependencies>

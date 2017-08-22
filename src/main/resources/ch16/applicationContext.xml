@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+	   					   http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc.xsd">
+
+    <!--Property files -->
+    <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="location" value="classpath:ch16/application.properties">
+        </property>
+        <property name="placeholderPrefix" value="$prop{"/>
+        <property name="placeholderSuffix" value="}"/>
+    </bean>
+
+    <bean id="dictionary" class="ch16.DictionaryImpl">
+        <constructor-arg value="$prop{dictionaryFilename}"/>
+    </bean>
+
+    <bean id="spellChecker" class="ch16.SpellChecker">
+        <property name="dictionary" ref="dictionary"/>
+    </bean>
+
+    <bean id="date" class="java.util.Date" scope="prototype" />
+
+    <!-- JDBC Template Confgiuration -->
+
+    <!-- The preceding configuration creates an embedded H2 database populated with SQL
+    from schema.sql and testdata.sql resources in the classpath.
+    The database instance is made available to the Spring container as a bean of type javax.sql.DataSource.
+    This bean can then be injected into data access objects as needed.-->
+    <jdbc:embedded-database id="datasource" type="H2">
+        <jdbc:script location="classpath:ch16/schema.sql"/>
+        <jdbc:script location="classpath:ch16/test-data.sql"/>
+    </jdbc:embedded-database>
+
+    <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+        <property name="dataSource" ref="datasource"/>
+    </bean>
+
+</beans>

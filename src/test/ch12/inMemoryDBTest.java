@@ -1,5 +1,6 @@
 package ch12;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -36,6 +37,11 @@ public class inMemoryDBTest {
         ResultSet rs = statement.executeQuery("select count(*) FROM teams;");
         assertTrue(rs.next());
         assertEquals(3, rs.getInt(1));
+    }
+
+    @After
+    public void terminate() throws SQLException {
+        connection.close();
     }
 
 
