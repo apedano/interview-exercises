@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 25 April 2011 7:52:33 PM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="ch17.Role" table="roles">
+        <id name="ID" type="java.lang.Long">
+            <column name="ROLE_ID" />
+            <generator class="native" />
+        </id>
+        <property name="name" type="string">
+            <column name="name" length="100" not-null="true" unique="false" />
+        </property>
+        <set name="users" table="Users_Roles" cascade="save-update" inverse="true" lazy="true">
+            <key column="ROLE_ID"/>
+            <many-to-many class="ch17.User" column="USER_ID"/>
+        </set>
+
+        <!--<one-to-one name="stockDetail" class="com.mkyong.stock.StockDetail"
+                    cascade="save-update"></one-to-one>-->
+    </class>
+</hibernate-mapping>

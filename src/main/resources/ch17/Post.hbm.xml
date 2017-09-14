@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 25 April 2011 7:52:33 PM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+
+    <class name="ch17.Post" table="posts">
+        <id name="ID" type="java.lang.Long">
+            <column name="POST_ID" />
+            <generator class="native" />
+        </id>
+        <property name="text" type="text">
+            <column name="text" not-null="true" unique="false" />
+        </property>
+        <property name="creationDateTime" type="date">
+            <column name="timestamp" not-null="true" unique="false" />
+        </property>
+        <many-to-one name="creator"
+                     class="ch17.User"
+                     column="USER_ID"
+                     not-null="true"
+                     cascade="none"
+                />
+    </class>
+</hibernate-mapping>
